@@ -40,7 +40,7 @@ int main(){
         bothFlag = 0;
     }
 
-    printf("B:%d, A:%d, mid:%d, both:%d\n",topB,bottomA,middle,both);
+    //printf("B:%d, A:%d, mid:%d, both:%d\n",topB,bottomA,middle,both);
     if (topB == bottomA && topB == both && topB != 0){
         printf("%d", middle + both - 1);
     }
