@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define REP(i, n) for(int i = 0; i < n; i++)
+#define REPR(i, n) for(int i = n; i >= 0; i--)
+#define FOR(i, m, n) for(int i = m; i < n; i++)
+#define ALL(obj) (obj).begin(), (obj).end()
+#define INF 1e9
+typedef long long ll;
+
+
+vector<int> dx{1,0,-1,0};
+vector<int> dy{0,1,0,-1};
+
+
+
+int main() {
+    int H,W,K; cin >>H>>W>>K;
+    pair<int,int> start, goal;
+    cin >>start.first>>start.second>>goal.first>>goal.second;
+    
+    vector<vector<char>> pond(H+2, vector<char>(W+2, '@'));
+    vector<vector<int>> G(H+2, vector<int>(W+2, -1));
+    FOR(i,1,H+1){
+        string S;
+        cin >> S;
+        FOR(j,1,W+1){
+            pond[i][j] = S[j-1];
+        }
+    }
+    G[start.first][start.second] = 0;
+
+    queue<pair<int,int>> q;
+    q.push(start);
+
+    while(!q.empty()){
+        auto pos = q.front();
+        q.pop();
+
+        if (pos == goal){
+            cout << G[pos.first][pos.second] << endl;
+            return 0;
+        }
+        REP(i,4){
+            FOR(k,1,K+1){
+                int next_x = pos.first + k*dx[i];
+                int next_y = pos.second + k*dy[i];
+                if(pond[next_x][next_y]=='.' && G[next_x][next_y]==-1){
+                    //水上かつ未探索なら
+                    G[next_x][next_y] = G[pos.first][pos.second] + 1;
+                    q.push(make_pair(next_x, next_y));
+                }else if(pond[next_x][next_y]=='@' || G[next_x][next_y]<=G[pos.first][pos.second]){//一方向に対する無駄な検索を減らすことでうまくやってる
+                    break;//0,1,1,1のあと、2、3個目の'1'から捜査するのは無駄！！
+                }
+            }
+        }
+    }
+
+    cout << -1 << endl;
+    return 0;
+}

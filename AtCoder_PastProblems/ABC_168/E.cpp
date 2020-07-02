@@ -1,5 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+#define REP(i, n) for(int i = 0; i < n; i++)
+#define REPR(i, n) for(int i = n; i >= 0; i--)
+#define FOR(i, m, n) for(int i = m; i < n; i++)
+#define ALL(obj) (obj).begin(), (obj).end()
+#define INF 1e9
+typedef long long ll;
+
+#include <bits/stdc++.h>
+using namespace std;
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
 #define FOR(i, m, n) for(int i = m; i < n; i++)
@@ -8,11 +18,8 @@ using namespace std;
 typedef long long ll;
 
 
-//////////////////ここの値は必ず確認！！！！！////////////////////
-//---------------------------------------------------------//
 const int MOD = 1e9+7;
 const int MAXR = 510000;
-//---------------------------------------------------------//
 
 template<ll mod> class modint{
 public:
@@ -99,4 +106,77 @@ mint com(ll n,ll k){
     if(n<0)return 0;
     if(k==0) return 1;
     return fac[n]*finv[k]*finv[n-k];
+}
+
+
+ll gcd(ll a, ll b){
+    if (a%b==0){
+        return (b);
+    }
+    else{
+        return (gcd(b,a%b));
+    }
+}
+
+int main() {
+    int N; cin >>N;
+    map<pair<ll,ll>, int> AB;
+    mint zeros = 0;
+    REP(i,N){
+        ll a,b;
+        cin >> a >> b;
+        if(a==0 && b==0){//[0,0]は除外（どの点とも組にならないため）
+            zeros += 1;
+            continue;
+        }
+        if(a==0 && b!=0){
+            a = 0;
+            b = 1;
+        }else if(a!=0 && b==0){
+            a = 1;
+            b = 0;
+        }else if(a>0){
+            ll g = gcd(a,abs(b));
+            a = a/g;
+            b = b/g;
+        }else if(a<0){
+            ll g = gcd(abs(a),abs(b));
+            a = -a/g;
+            b = -b/g;
+        }
+        AB[make_pair(a,b)]++;
+    }
+
+    mint ans = 1;
+    map<pair<ll,ll>, int> seen;
+
+    for(auto x: AB){
+        if(x.second==0 || seen[x.first]==1){
+            continue;
+        }
+        ll num1 = x.second;
+        ll pa = -x.first.second;
+        ll pb = x.first.first;
+
+        if (pa==0){
+            pb=1;
+        }else if(pa<0){
+            pa = -pa;
+            pb = -pb;
+        }
+
+        ll num2 = AB[make_pair(pa, pb)];
+
+        seen[x.first] = 1;
+        seen[make_pair(pa, pb)] = 1;
+        
+        ans *= (modpow(2, num1) + modpow(2,num2) - 1);
+        
+    }
+
+    ans += zeros;
+    ans -= 1;//0匹の場合をのぞく
+
+    cout << ans << endl;
+    return 0;
 }

@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
 #define FOR(i, m, n) for(int i = m; i < n; i++)
@@ -7,12 +8,8 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-
-//////////////////ここの値は必ず確認！！！！！////////////////////
-//---------------------------------------------------------//
 const int MOD = 1e9+7;
-const int MAXR = 510000;
-//---------------------------------------------------------//
+const int MAXR = 3010000;
 
 template<ll mod> class modint{
 public:
@@ -99,4 +96,18 @@ mint com(ll n,ll k){
     if(n<0)return 0;
     if(k==0) return 1;
     return fac[n]*finv[k]*finv[n-k];
+}
+
+int main() {
+    com_init();
+    int K; cin >> K;
+    string S; cin >> S;
+    int s = S.size();
+
+    mint ans = 0;
+    REP(x,K+1){
+        ans += com(s-1+x, s-1) * modpow(25,x) * modpow(26,K-x);
+    }
+    cout << ans << endl;
+    return 0;
 }

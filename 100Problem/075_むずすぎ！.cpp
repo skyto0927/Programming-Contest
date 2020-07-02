@@ -98,10 +98,48 @@ mint com(ll n,ll k){
     return fac[n]*finv[k]*finv[n-k];
 }
 
-
+void dfs(int pos, int from, vector<vector<int>>& G, vector<int>& dp){
+    dp[pos] = 1;
+    for(auto next: G[pos]){
+        if(next == from) continue;
+        dfs(next, pos, G,dp);
+        dp[pos] += dp[next];
+    }
+}
 
 int main() {
+    com_init();
     int N; cin >> N;
+    vector<vector<int>> G(N);
+    vector<int> A(N-1);
+    vector<int> B(N-1);
+    REP(i,N-1){
+        int a,b;
+        cin >> a >> b;
+        a--;
+        b--;
+        A[i] = a;
+        B[i] = b;
+        G[a].push_back(b);
+        G[b].push_back(a);
+    }
+    vector<int> dp(N,0);
+
+    dfs(0, -1, G, dp);
+
+    mint ans = 0;
+    REP(i,N-1){
+        int par = A[i];
+        int son = B[i];
+        if(dp[par] < dp[son]){
+            swap(par, son);
+        }
+        ans += (mint(1) - modpow(mint(1)/mint(2), dp[son])) * (mint(1) - modpow(mint(1)/mint(2),N-dp[son]));
+    }
+    ans += mint(1) - modpow(mint(1)/mint(2), N);
+    ans -= mint(N)/2;
+
+    cout << ans << endl;
 
     return 0;
 }
