@@ -8,8 +8,10 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-const int MOD = 1000000007;
 
 int main() {
+    int A,P;
+    cin >> A >> P;
+    cout << (A*3+P)/2 << endl;
     return 0;
 }

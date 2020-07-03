@@ -8,8 +8,21 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-const int MOD = 1000000007;
 
 int main() {
+    long double N,K;
+    cin >> N >> K;
+
+    long double ans = 0;
+    FOR(i,1,N+1){
+        long double x = ceil(log2(K/i));
+        if(x<= 0){
+            ans += 1 / N;
+        }else{
+            ans += pow(0.5,x) / N;
+        }
+    }
+
+    cout << fixed << setprecision(12) << ans << endl;
     return 0;
 }

@@ -8,8 +8,21 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-const int MOD = 1000000007;
 
 int main() {
+    int N;
+    cin >> N;
+    vector<tuple<string, int, int>> R(N);
+    REP(i,N){
+        string s;
+        int p;
+        cin >> s >> p;
+        R[i] = make_tuple(s,-p,i+1);
+    }
+    sort(ALL(R));
+
+    REP(i,N){
+        cout << get<2>(R[i]) << endl;
+    }
     return 0;
 }
