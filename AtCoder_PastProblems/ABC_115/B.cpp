@@ -10,17 +10,18 @@ typedef long long ll;
 
 
 int main() {
-    ll N; cin >> N;
-    ll V=0, E=0;
-    REP(i,N-1){
-        ll u,v; cin >> u >> v;
-        E += min(u,v) * (N - max(u,v) + 1);
-    }
+    int N; cin >> N;
+    vector<int> p(N); REP(i,N) cin >> p[i];
+    sort(ALL(p));
 
-    FOR(v,1,N+1){
-        V += ll(v)*(ll(v)+1)/2;
+    int ans = 0;
+    REP(i,N){
+        if(i==N-1){
+            ans += p[i]/2;
+        }else{
+            ans += p[i];
+        }
     }
-
-    cout << V - E << endl;
+    cout << ans << endl;
     return 0;
 }

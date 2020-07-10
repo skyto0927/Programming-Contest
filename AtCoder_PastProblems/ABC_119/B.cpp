@@ -10,17 +10,16 @@ typedef long long ll;
 
 
 int main() {
-    ll N; cin >> N;
-    ll V=0, E=0;
-    REP(i,N-1){
-        ll u,v; cin >> u >> v;
-        E += min(u,v) * (N - max(u,v) + 1);
+    int N; cin >> N;
+    double ans = 0;
+    REP(i,N){
+        double x; string S; cin >> x >> S;
+        if(S=="JPY"){
+            ans += x;
+        }else{
+            ans += x*380000;
+        }
     }
-
-    FOR(v,1,N+1){
-        V += ll(v)*(ll(v)+1)/2;
-    }
-
-    cout << V - E << endl;
+    cout << ans << endl;
     return 0;
 }

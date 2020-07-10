@@ -10,17 +10,19 @@ typedef long long ll;
 
 
 int main() {
-    ll N; cin >> N;
-    ll V=0, E=0;
-    REP(i,N-1){
-        ll u,v; cin >> u >> v;
-        E += min(u,v) * (N - max(u,v) + 1);
+    int N; cin >> N;
+    double T,A; cin >> T >> A;
+
+    double dist = INF;
+    int itr = 0;
+    REP(i,N){
+        double h; cin >> h;
+        if(dist > abs(T-h*0.006 - A)){
+            dist = abs(T-h*0.006 - A);
+            itr = i+1;
+        }
     }
 
-    FOR(v,1,N+1){
-        V += ll(v)*(ll(v)+1)/2;
-    }
-
-    cout << V - E << endl;
+    cout << itr << endl;
     return 0;
 }
