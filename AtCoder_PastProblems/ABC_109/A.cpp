@@ -2,7 +2,6 @@
 using namespace std;
 
 typedef long long ll;
-template<typename T>
 
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n; i >= 0; i--)
@@ -13,6 +12,8 @@ template<typename T>
 
 
 int main() {
+    int A,B; cin >> A >> B;
+    if(A%2==1 && B%2==1) cout << "Yes" << endl;
+    else cout << "No" << endl;
     return 0;
 }
-///////////////////////////////////////////////////////

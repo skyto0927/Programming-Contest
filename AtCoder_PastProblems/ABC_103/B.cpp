@@ -2,7 +2,6 @@
 using namespace std;
 
 typedef long long ll;
-template<typename T>
 
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n; i >= 0; i--)
@@ -13,6 +12,19 @@ template<typename T>
 
 
 int main() {
+    string S; cin >> S;
+    string T; cin >> T;
+    int N = S.size();
+    REP(i,N){
+        bool ok = true;
+        REP(j,N){
+            if(S[(j+i)%N] != T[j]) ok = false;
+        } 
+        if(ok){
+            cout << "Yes" << endl;
+            return 0;
+        }
+    }
+    cout << "No" << endl;
     return 0;
 }
-///////////////////////////////////////////////////////

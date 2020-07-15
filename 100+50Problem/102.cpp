@@ -2,7 +2,6 @@
 using namespace std;
 
 typedef long long ll;
-template<typename T>
 
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n; i >= 0; i--)
@@ -12,7 +11,18 @@ template<typename T>
 #define LINF 1e18
 
 
-int main() {
+
+
+int main(){
+    int N; cin >> N;
+    vector<int> a(N); REP(i,N) cin >> a[i];
+
+    vector<int> b(a);
+    sort(ALL(b));
+    b.erase(unique(ALL(b)), b.end());
+    REP(i,N){
+        cout << lower_bound(ALL(b), a[i]) - b.begin() << endl;
+    }
+
     return 0;
 }
-///////////////////////////////////////////////////////

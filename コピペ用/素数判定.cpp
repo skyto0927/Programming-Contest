@@ -7,7 +7,7 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-
+//素数かどうか判定
 bool is_prime_number(int n){
     if (n <= 1) return false;
     if (n == 2 || n == 3) return true;
@@ -18,6 +18,7 @@ bool is_prime_number(int n){
     return true;
 }
 
+//エラトステネスの篩による素数表
 vector<int> get_prime_numbers(int n){
     vector<int> table(n+1, 1);
     table[0] = 0;
@@ -32,6 +33,7 @@ vector<int> get_prime_numbers(int n){
     return table;
 }
 
+//素因数分解
 vector<pair<int,int>> prime_fact(int n){
     vector<pair<int,int>> a;
     if (n <= 1) return a;

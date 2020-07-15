@@ -2,7 +2,6 @@
 using namespace std;
 
 typedef long long ll;
-template<typename T>
 
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n; i >= 0; i--)
@@ -13,6 +12,15 @@ template<typename T>
 
 
 int main() {
+    ll N,K; cin >> N >> K;
+    if(K%2 == 1){
+        cout << (N/K)*(N/K)*(N/K) << endl;
+    }else if(K%2 == 0){
+        ll a = N/(K/2) - N/K;
+        ll b = N/K;
+        cout << a*a*a + b*b*b << endl;
+    }
+    
+
     return 0;
 }
-///////////////////////////////////////////////////////

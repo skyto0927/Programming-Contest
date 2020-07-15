@@ -2,7 +2,7 @@
 using namespace std;
 
 typedef long long ll;
-template<typename T>
+
 
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n; i >= 0; i--)
@@ -13,6 +13,22 @@ template<typename T>
 
 
 int main() {
+    ll N,M; cin >> N >> M;
+    vector<ll> A(N);
+    ll sum = 0;
+    map<ll,ll> B;
+    REP(i,N){
+        cin >> A[i];
+        sum += A[i];
+        B[sum%M] ++;
+    }
+
+    ll ans = B[0]; 
+    for(auto n: B){
+        ans += n.second * (n.second-1) / 2;
+    }
+
+    cout << ans << endl;
+    
     return 0;
 }
-///////////////////////////////////////////////////////

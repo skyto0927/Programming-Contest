@@ -2,7 +2,6 @@
 using namespace std;
 
 typedef long long ll;
-template<typename T>
 
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n; i >= 0; i--)
@@ -13,6 +12,17 @@ template<typename T>
 
 
 int main() {
+    int N,M,X,Y; cin >> N >> M >> X >> Y;
+    REP(i,N){
+        int x; cin >> x;
+        X = max(X,x);
+    }
+    REP(i,M){
+        int y; cin >> y;
+        Y = min(Y,y);
+    }
+
+    if(X<Y) cout << "No War" << endl;
+    else cout << "War" << endl;
     return 0;
 }
-///////////////////////////////////////////////////////
