@@ -8,7 +8,17 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-
 int main() {
+    int N,K; cin >> N >> K;
+    vector<int> A(N);
+    REP(i,N) cin >> A[i];
+
+    int ans = 0;
+    N -= K;
+    ans++;
+
+    if(N!=0) ans += (N-1)/(K-1) + 1;
+
+    cout << ans << endl;
     return 0;
 }

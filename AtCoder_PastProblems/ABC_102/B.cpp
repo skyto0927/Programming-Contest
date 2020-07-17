@@ -10,5 +10,10 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    vector<int> A(N);
+    REP(i,N) cin >> A[i];
+    sort(ALL(A));
+    cout << A[N-1] - A[0] << endl;
     return 0;
 }

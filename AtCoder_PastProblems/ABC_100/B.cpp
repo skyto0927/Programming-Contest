@@ -10,5 +10,10 @@ typedef long long ll;
 
 
 int main() {
+    int D,N; cin >> D >> N;
+    if(N!=100) cout << N;
+    else cout << 101;
+    REP(i,D) cout << "00";
+    cout << endl;
     return 0;
 }

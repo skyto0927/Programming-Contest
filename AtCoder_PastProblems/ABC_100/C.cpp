@@ -10,5 +10,17 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+
+    ll ans = 0;
+    REP(i,N){
+        int a; cin >> a;
+        while(a%2==0){
+            a/=2; ans++;
+        }
+    }
+
+    cout << ans << endl;
+
     return 0;
 }

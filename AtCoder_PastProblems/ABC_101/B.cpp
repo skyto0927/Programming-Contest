@@ -10,5 +10,15 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    int n = N;
+    int SN = 0;
+    while(n>0){
+        SN += n%10;
+        n /= 10;
+    }
+
+    if(N%SN == 0)cout << "Yes" << endl;
+    else cout << "No" << endl;
     return 0;
 }

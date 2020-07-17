@@ -10,5 +10,8 @@ typedef long long ll;
 
 
 int main() {
+    string S; cin >> S;
+    int p = count(ALL(S), '+');
+    cout << p - (4-p) <<  endl;
     return 0;
 }
