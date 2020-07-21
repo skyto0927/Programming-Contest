@@ -10,22 +10,15 @@ typedef long long ll;
 
 
 int main() {
-    int X; cin >> X;
-    vector<int> table(1010,0);
-    table[1] = 1;
-    FOR(i,2,X){
-        int num = i;
-        while(num*i<=X){
-            num *= i;
-            table[num] = 1;
-        }
+    int N,M,X; cin >> N >> M >> X;
+
+    int l=0, r=0;
+    REP(i,M){
+        int a; cin >> a;
+        if(a<X) l++;
+        else r++;
     }
 
-    REPR(i,X){
-        if(table[i] == 1){
-            cout << i << endl;
-            break;
-        }
-    }
+    cout << min(l,r) << endl;
     return 0;
 }

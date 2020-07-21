@@ -10,10 +10,13 @@ typedef long long ll;
 
 
 int main() {
-    int a,b,c; cin >> a >> b >> c;
-    int d; cin >> d;
-    if(abs(c-a) <= d) cout << "Yes" << endl;
-    else if(abs(a-b)<=d && abs(b-c)<=d) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    ll N,M; cin >> N >> M;
+
+    if(N>M) swap(N,M);
+
+    if(N>1) cout << (N-2) * (M-2) << endl;
+    else if(M!=1) cout << M-2 << endl;
+    else cout << 1 << endl;
+
     return 0;
 }

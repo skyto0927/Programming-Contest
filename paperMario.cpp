@@ -17,7 +17,7 @@ struct Play{
 };
 deque<Play> ans;
 
-int M;
+int M,N;
 
 void rotate(int x, int y){
     vector<int> num(12,0);
@@ -53,24 +53,23 @@ void output(){
     REP(i,M){
         auto a = ans.front(); ans.pop_front();
         if(a.s == "rotate"){
-            cout << "  " << "内側から" << a.x+1 << "マス目のリングを";
+            cout << "内側から" << a.x+1 << "マス目のリングを";
             if(a.y<=6)  cout << " 反時計回りに" << a.y << "マス回転" << endl;
             else cout << " 時計回りに" << 12-a.y << "マス回転" << endl;
         }else{
-            cout << "  " << "" << a.x+1 << "列目を ";
+            cout << "" << a.x+1 << "列目を ";
             if(a.y<=4) cout << a.y << "マス内側にスライド" << endl;
             else cout << 8-a.y << "マス外側にスライド" << endl;
         }
         ans.push_back(a);
     }
+    cout << endl;
 }
 
 void solve(int m){
 
     if(m==0){
-        // auto a = ans.front();
-        // cout << a.s << ": " << a.x << ", " << a.y << endl;
-
+        int cnt = 0;
 
         REP(i,12){
             bool ok = true;
@@ -78,9 +77,7 @@ void solve(int m){
                 if(circle[i][j] == 0) ok = false;
             }
             if(ok){
-                cout << "line!" << endl;
-
-                output();
+                cnt++;
             }
         }
 
@@ -89,12 +86,18 @@ void solve(int m){
             REP(j,2){
                 REP(k,2){
                     if(circle[(i+j)%12][k] == 0) ok = false;
+                    if(circle[(i+j)%12][k+2] == 1) ok = false;
                 }
             }
             if(ok){
-                cout << "box!" << endl;
-                output();
+                cnt++;
+                i++;
             }
+        }
+
+        if(cnt == N/4){
+            output();
+            return;
         }
     }else{
 
@@ -140,7 +143,7 @@ void solve(int m){
 int main() {
 
     cin >> M;//操作回数
-    int N; cin >> N;//敵の数
+    cin >> N;//敵の数
     REP(i,N){
         int a,b; cin >> a >> b;//1-indexed
         a--;

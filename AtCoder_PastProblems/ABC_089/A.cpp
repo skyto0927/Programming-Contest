@@ -10,10 +10,7 @@ typedef long long ll;
 
 
 int main() {
-    int a,b,c; cin >> a >> b >> c;
-    int d; cin >> d;
-    if(abs(c-a) <= d) cout << "Yes" << endl;
-    else if(abs(a-b)<=d && abs(b-c)<=d) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    int N; cin >> N;
+    cout << N/3 << endl;
     return 0;
 }

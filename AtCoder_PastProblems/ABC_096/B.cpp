@@ -10,10 +10,12 @@ typedef long long ll;
 
 
 int main() {
-    int a,b,c; cin >> a >> b >> c;
-    int d; cin >> d;
-    if(abs(c-a) <= d) cout << "Yes" << endl;
-    else if(abs(a-b)<=d && abs(b-c)<=d) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    vector<int> A(3); cin >> A[0] >> A[1] >> A[2];
+    int K; cin >> K;
+
+    sort(ALL(A));
+
+    REP(i,K) A[2] *= 2;
+    cout << A[0] + A[1] + A[2] << endl;
     return 0;
 }

@@ -10,22 +10,18 @@ typedef long long ll;
 
 
 int main() {
-    int X; cin >> X;
-    vector<int> table(1010,0);
-    table[1] = 1;
-    FOR(i,2,X){
-        int num = i;
-        while(num*i<=X){
-            num *= i;
-            table[num] = 1;
-        }
+    int N; cin >> N;
+    vector<int> X(N); 
+    REP(i,N) cin >> X[i];
+
+    vector<int> Y(X);
+    sort(ALL(Y));
+    int l = Y[N/2-1], r = Y[N/2];
+
+    REP(i,N){
+        if(X[i] >= r) cout << l << endl;
+        else if(X[i] <= l) cout << r << endl;
     }
 
-    REPR(i,X){
-        if(table[i] == 1){
-            cout << i << endl;
-            break;
-        }
-    }
     return 0;
 }

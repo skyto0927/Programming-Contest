@@ -10,22 +10,15 @@ typedef long long ll;
 
 
 int main() {
-    int X; cin >> X;
-    vector<int> table(1010,0);
-    table[1] = 1;
-    FOR(i,2,X){
-        int num = i;
-        while(num*i<=X){
-            num *= i;
-            table[num] = 1;
-        }
+    int N,K; cin >> N >> K;
+    ll ans = 0;
+    FOR(b,K+1,N+1){
+        ans += (N+1) / b * (b-K);
+        ans += max(0, (N+1)%b - K);
     }
 
-    REPR(i,X){
-        if(table[i] == 1){
-            cout << i << endl;
-            break;
-        }
-    }
+    if(K==0) ans -= N;//コーナーケース、あまりが0のときはa=0を除外
+
+    cout << ans << endl;
     return 0;
 }

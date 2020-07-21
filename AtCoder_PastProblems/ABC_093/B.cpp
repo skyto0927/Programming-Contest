@@ -10,22 +10,14 @@ typedef long long ll;
 
 
 int main() {
-    int X; cin >> X;
-    vector<int> table(1010,0);
-    table[1] = 1;
-    FOR(i,2,X){
-        int num = i;
-        while(num*i<=X){
-            num *= i;
-            table[num] = 1;
-        }
-    }
+    int A,B,K; cin >> A >> B >> K;
+    set<int> ans;
 
-    REPR(i,X){
-        if(table[i] == 1){
-            cout << i << endl;
-            break;
-        }
+    REP(i,min(B-A+1,K)){
+        ans.insert(A+i);
+        ans.insert(B-i);
     }
+    for(auto a: ans) cout << a << endl;
+
     return 0;
 }

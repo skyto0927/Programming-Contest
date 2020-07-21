@@ -10,22 +10,15 @@ typedef long long ll;
 
 
 int main() {
-    int X; cin >> X;
-    vector<int> table(1010,0);
-    table[1] = 1;
-    FOR(i,2,X){
-        int num = i;
-        while(num*i<=X){
-            num *= i;
-            table[num] = 1;
-        }
-    }
+    int A,B; cin >> A >> B;
+    int ans = 0;
 
-    REPR(i,X){
-        if(table[i] == 1){
-            cout << i << endl;
-            break;
-        }
+    FOR(n,A,B+1){
+        string s = to_string(n);
+        string sr = s;
+        reverse(ALL(sr));
+        if(s == sr) ans++;
     }
+    cout << ans << endl;
     return 0;
 }

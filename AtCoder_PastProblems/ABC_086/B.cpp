@@ -10,22 +10,15 @@ typedef long long ll;
 
 
 int main() {
-    int X; cin >> X;
-    vector<int> table(1010,0);
-    table[1] = 1;
-    FOR(i,2,X){
-        int num = i;
-        while(num*i<=X){
-            num *= i;
-            table[num] = 1;
-        }
-    }
+    string a,b; cin >> a >> b;
+    int n = stoi(a+b);
 
-    REPR(i,X){
-        if(table[i] == 1){
-            cout << i << endl;
-            break;
+    REP(i,sqrt(n)+1){
+        if(i*i==n){
+            cout << "Yes" << endl;
+            return 0;
         }
     }
+    cout << "No" << endl;
     return 0;
 }

@@ -10,5 +10,27 @@ typedef long long ll;
 
 
 int main() {
+    string S; cin >> S;
+    int K; cin >> K;
+
+    int N = S.size();
+    set<string> dic;
+
+    REP(n,K){
+        REP(i,N-n){
+            string s;
+            REP(j,n+1){
+                s.push_back(S[i+j]);
+            }
+            dic.insert(s);
+        }
+    }
+
+
+    auto itr = dic.begin();
+    REP(i,K-1) itr++;
+
+    cout << *itr << endl;
+
     return 0;
 }
