@@ -11,20 +11,13 @@ typedef long long ll;
 
 int main() {
     int N; cin >> N;
-    map<int,int> A;
-    REP(i,N){
-        int a; cin >> a;
-        A[a] ++;
-    }
-    int ans = 0;
-    for(auto a: A){
-        if(a.first < a.second){
-            ans += a.second - a.first;
-        }else if(a.first > a.second){
-            ans += a.second;
-        }
-    }
+    int n = N;
 
-    cout << ans << endl;
+    int f = 0;
+    while(n>0){
+        f += n%10;
+        n /= 10;
+    }
+    cout << (N%f==0? "Yes": "No") << endl;
     return 0;
 }

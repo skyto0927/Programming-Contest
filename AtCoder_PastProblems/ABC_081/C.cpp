@@ -10,21 +10,27 @@ typedef long long ll;
 
 
 int main() {
-    int N; cin >> N;
+    int N,K; cin >> N >> K;
     map<int,int> A;
     REP(i,N){
         int a; cin >> a;
-        A[a] ++;
-    }
-    int ans = 0;
-    for(auto a: A){
-        if(a.first < a.second){
-            ans += a.second - a.first;
-        }else if(a.first > a.second){
-            ans += a.second;
-        }
+        A[a]++;
     }
 
-    cout << ans << endl;
+    priority_queue<int, vector<int>, greater<int>> ball;
+    for(auto i: A){
+        ball.push(i.second);
+    }
+
+    int ans = 0;
+    if(ball.size() <= K){
+        cout << 0 << endl;
+    }else{
+        REP(i,K-ball.size()){
+            ans += ball.top(); ball.pop();
+        }
+        cout << ans << endl;
+    }
+
     return 0;
 }

@@ -10,11 +10,7 @@ typedef long long ll;
 
 
 int main() {
-    string s,t; cin >> s >> t;
-    sort(ALL(s));
-    sort(ALL(t), greater<char>());
-
-    if(s<t) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    int N,A,B; cin >> N >> A >> B;
+    cout << min(N*A,B) << endl;
     return 0;
 }

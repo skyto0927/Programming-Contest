@@ -11,20 +11,16 @@ typedef long long ll;
 
 int main() {
     int N; cin >> N;
-    map<int,int> A;
+    int ans = INF;
     REP(i,N){
         int a; cin >> a;
-        A[a] ++;
-    }
-    int ans = 0;
-    for(auto a: A){
-        if(a.first < a.second){
-            ans += a.second - a.first;
-        }else if(a.first > a.second){
-            ans += a.second;
+        int cnt = 0;
+        while(a>0 && a%2==0){
+            a /= 2;
+            cnt++;
         }
+        ans = min(ans, cnt);
     }
-
     cout << ans << endl;
     return 0;
 }

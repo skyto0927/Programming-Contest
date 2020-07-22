@@ -11,20 +11,12 @@ typedef long long ll;
 
 int main() {
     int N; cin >> N;
-    map<int,int> A;
+    vector<ll> dp(100,0);
+    dp[0]=2;
+    dp[1]=1;
     REP(i,N){
-        int a; cin >> a;
-        A[a] ++;
+        dp[i+2] = dp[i+1] + dp[i];
     }
-    int ans = 0;
-    for(auto a: A){
-        if(a.first < a.second){
-            ans += a.second - a.first;
-        }else if(a.first > a.second){
-            ans += a.second;
-        }
-    }
-
-    cout << ans << endl;
+    cout << dp[N] << endl;
     return 0;
 }
