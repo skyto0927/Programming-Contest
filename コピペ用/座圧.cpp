@@ -16,8 +16,7 @@ int main() {
 }
 ///////////////////////////////////////////////////////
 
-template<typename T>
-vector<T> compress(vector<T> &C1, vector<T> &C2){
+template<typename T> vector<T> compress(vector<T> &C1, vector<T> &C2){
     vector<T> vals;
     int N = (int)C1.size();
     REP(i,N){
