@@ -44,7 +44,7 @@ void dfs(double l, double r, double h){//[l,r]はすでに速度hに達してい
     }
     //cout << "    " << min_v << ", " << min_itr << endl;
 
-    if((r-l) <= 2*(min_v-h)){//そもそも台形にならないなら
+    if((r-l) <= 2*(min_v-h)){//そもそも台形にならないなら＝最小の上限にすらたどり着かないなら
         ans += (r-l)*(r-l)/4.0;
         return;
     }
@@ -60,10 +60,6 @@ void dfs(double l, double r, double h){//[l,r]はすでに速度hに達してい
 
     if(r2 < r1 || l2 < l1){//上記値の範囲で場合わけ
         dfs(l1, r2, min_v);
-    }else if(r1<=l1 && l1<=l2){
-        dfs(l2, r2, min_v);
-    }else if(r1<=r2 && r2<=l2){
-        dfs(l1, r1, min_v);
     }else{
         dfs(l1,r1,min_v);
         dfs(l2,r2,min_v);
@@ -81,6 +77,6 @@ int main() {
     REP(i,N) t_sum[i+1] += t_sum[i] + t[i];
     ans = 0.0;
     dfs(0,t_sum[N],0);
-    cout << ans << endl;
+    cout << fixed << setprecision(10) << ans << endl;
     return 0;
 }
