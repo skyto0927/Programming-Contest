@@ -6,10 +6,13 @@ using namespace std;
 #define FOR(i, m, n) for(int i = m; i < n; i++)
 #define ALL(obj) (obj).begin(), (obj).end()
 #define INF 1e9
-#define LINF 1e18
 typedef long long ll;
 
 
 int main() {
+    int r,g,b; cin >> r >> g >> b;
+    
+    if((10*g+b)%4==0)cout << "YES" << endl;
+    else cout << "NO" << endl;
     return 0;
 }

@@ -6,10 +6,19 @@ using namespace std;
 #define FOR(i, m, n) for(int i = m; i < n; i++)
 #define ALL(obj) (obj).begin(), (obj).end()
 #define INF 1e9
-#define LINF 1e18
 typedef long long ll;
 
 
 int main() {
+    int N,M; cin >> N >> M;
+    vector<int> A(N,0);
+    REP(i,M){
+        int a,b; cin >> a >> b;
+        A[a-1]++;
+        A[b-1]++;
+    }
+    REP(i,N){
+        cout << A[i] << endl;
+    }
     return 0;
 }

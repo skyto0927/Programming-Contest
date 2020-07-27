@@ -8,11 +8,6 @@ using namespace std;
 #define INF 1e9
 typedef long long ll;
 
-int main() {
-    return 0;
-}
-///////////////////////////////////////////////////////
-
 struct UnionFind{
     vector<int> data;
     //data[i] = -x ... iが根であり、サイズがx
@@ -41,3 +36,59 @@ struct UnionFind{
         return -data[root(x)];
     }
 };
+
+struct Edge{
+    int s,t,cost;
+    bool operator<(const Edge &o) const{
+        return cost < o.cost;
+    }
+};
+
+struct Graph{
+    int n;
+    vector<Edge> es;
+
+    int kruskal(){
+        sort(ALL(es));
+
+        UnionFind uf(n);
+        int min_cost = 0;
+        REP(i,es.size()){
+            Edge& e = es[i];
+            if(!uf.find_set(e.s, e.t)){//辺を追加しても閉路ができなければ採用
+                min_cost += e.cost;
+                uf.union_set(e.s, e.t);
+            }
+        }
+
+        return min_cost;
+    }
+};
+
+int main() {
+    int N; cin >> N;
+    vector<pair<int,int>> X(N);
+    vector<pair<int,int>> Y(N);
+    REP(i,N){
+        int x,y; cin >> x >> y;
+        X[i] = {x,i};
+        Y[i] = {y,i};
+    }
+    sort(ALL(X));
+    sort(ALL(Y));
+
+    Graph G;
+    G.n = N;
+
+    REP(i,N-1){
+        G.es.push_back({X[i].second, X[i+1].second, X[i+1].first-X[i].first});
+    }
+
+
+    REP(i,N-1){
+        G.es.push_back({Y[i].second, Y[i+1].second, Y[i+1].first-Y[i].first});
+    }
+
+    cout << G.kruskal() << endl;
+    return 0;
+}

@@ -6,10 +6,14 @@ using namespace std;
 #define FOR(i, m, n) for(int i = m; i < n; i++)
 #define ALL(obj) (obj).begin(), (obj).end()
 #define INF 1e9
-#define LINF 1e18
 typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    vector<int> A(N);
+    REP(i,N) cin >> A[i];
+    sort(ALL(A));
+    cout << A[N-1] - A[0] << endl;
     return 0;
 }
