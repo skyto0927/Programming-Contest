@@ -19,7 +19,8 @@ bool bellman_ford(Edges &Es, int V, int s, vector<ll>& dis){
     dis.resize(V,LINF);
     dis[s] = 0;
     int cnt = 0;
-    while(cnt < V){
+    ll t_num;
+    while(cnt < 2*V){
         bool end = true;
         for(auto e: Es){
             if(dis[e.from] != LINF && dis[e.from]+e.cost < dis[e.to]){
@@ -28,24 +29,10 @@ bool bellman_ford(Edges &Es, int V, int s, vector<ll>& dis){
             }
         }
         if(end) return false;
+        if(cnt==V-1) t_num = dis[V-1];
         cnt++;
     }
-    return (cnt==V);
-}
-
-bool bellman2(Edges &Es, int V, int s, vector<ll>& dis, vector<bool>& negative){
-    int cnt = 0;
-    while(cnt <= V){
-        for(auto e: Es){
-            if(negative[e.from] == true) negative[e.to] = true;//値の更新が起きなくても負経路に入ることあり
-            if(dis[e.from] != LINF && dis[e.from]+e.cost < dis[e.to]){
-                dis[e.to] = dis[e.from] + e.cost;
-                negative[e.to] = true;
-            }
-        }
-        cnt++;
-    }
-    return (negative[V-1]);
+    return (t_num!=dis[V-1]);
 }
 
 int main() {
@@ -59,14 +46,11 @@ int main() {
     }
 
     vector<ll> dis;
-    bellman_ford(Es, N, 0, dis);
-    
-    vector<bool> negative(N,false);
-    if(bellman2(Es, N, 0, dis, negative)) cout << "inf" << endl;
-    else  cout << -dis[N-1] << endl;
-
-    
-
+    if(!bellman_ford(Es, N, 0, dis)){
+        cout << -dis[N-1] << endl;
+    }else{
+        cout << "inf" << endl;
+    }
 
 
 
