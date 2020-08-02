@@ -39,11 +39,11 @@ int main() {
                 ans.push_back({X, (n*K-X+Y)/2-y+(n*K+X+Y)/2});
             }
         }
-    }else if(X+Y<K){
+    }else if(X<K){
         ans.push_back({X,X-K});
         ans.push_back({(K+3*X-Y)/2, (-K+X+Y)/2});
         ans.push_back({X,Y});
-    }else if(X+Y >= K){
+    }else if(X >= K){
         int n = (X+Y-1)/K + 1;
         if(n*K%2 != (X+Y)%2){
             n++;

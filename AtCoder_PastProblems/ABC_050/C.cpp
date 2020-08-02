@@ -6,11 +6,12 @@ using namespace std;
 #define FOR(i, m, n) for(int i = m; i < n; i++)
 #define ALL(obj) (obj).begin(), (obj).end()
 #define INF 1e9
+#define LINF 1e18
 typedef long long ll;
 
 //////////////////ここの値は必ず確認！！！！！////////////////////
 //---------------------------------------------------------//
-const int MOD = 998244353;
+const int MOD = 1e9+7;
 const int MAXR = 510000;
 //---------------------------------------------------------//
 
@@ -101,90 +102,32 @@ mint com(ll n,ll k){
     return fac[n]*finv[k]*finv[n-k];
 }
 
-template<typename T> vector<T> compress(vector<T> &C1){
-    vector<T> vals;
-    int N = (int)C1.size();
-    REP(i,N){
-        vals.push_back(C1[i]);
-    }
-
-    sort(ALL(vals));
-    vals.erase(unique(ALL(vals)), vals.end());
-
-    REP(i,N){
-        C1[i] = lower_bound(ALL(vals), C1[i]) - vals.begin() + 1;
-    }
-
-    return vals;
-}
-
-template<class T> struct BIT{
-    vector<T> bit;
-    int M;
-
-    BIT(int M_): M(M_+1), bit(M_+1,0) {}
-
-    T sum(int a){//sum [1,i) 1_indexed!!!!
-        int ret = 0;
-        for(int i=a; i>0; i-= i & -i) ret += bit[i];
-        return ret;
-    }
-    
-    T sum(int a, int b){//sum [i,j)  1_indexed!!!!
-        return sum(b-1) - sum(a-1);
-    }
-
-    void add(int a, T x){
-        for(int i=a; i<M; i+= i & -i) bit[i] += x;
-    }
-
-    void print(){
-        FOR(i,1,M){
-            cout << sum(i,i+1) << " ";
-        }
-        cout << endl;
-    }
-};
-
 int main() {
     int N; cin >> N;
-    vector<int> Y(N);
-    vector<pair<int,int>> XY(N);
+    map<int,int> A;
     REP(i,N){
-        cin >> XY[i].first >> XY[i].second;
-    }
-    sort(ALL(XY));
-    REP(i,N){
-        Y[i] = XY[i].second;
+        int a; cin >> a;
+        A[a] ++;
     }
 
-    compress(Y);
-    BIT<int> left(N*2);
-    BIT<int> right(N*2);
-
-    REP(i,N){
-        right.add(Y[i],1);
+    if(N%2==1){
+        REP(i,N/2+1){
+            if(i==0 && A[0]!=1){
+                cout << 0 << endl;
+                return 0;
+            }else if(i!=0 && A[i*2]!=2){
+                cout << 0 << endl;
+                return 0;
+            }
+        }
+    }else{
+        REP(i,N/2){
+            if(A[i*2+1]!=2){
+                cout << 0 << endl;
+                return 0;
+            }
+        }
     }
-
-
-    mint ans = 0;
-    REP(i,N){
-        
-        left.add(Y[i],1);
-        right.add(Y[i],-1);
-
-        mint lu = modpow((ll)2, left.sum(Y[i]+1,N+1)) - 1;
-        mint ld = modpow((ll)2, left.sum(1,Y[i])) - 1;
-        mint ru = modpow((ll)2, right.sum(Y[i]+1,right.M)) - 1;
-        mint rd = modpow((ll)2, right.sum(1,Y[i])) - 1;
-        ans += modpow((ll)2, N-1);
-        ans += lu*rd;
-        ans += ld*ru;
-        ans += lu*rd*(ld+ru);
-        ans += ld*ru*(lu+rd);
-        ans += lu*ld*ru*rd;
-    }
-    cout << ans << endl;
-
+    cout << modpow(2,N/2) << endl;
     return 0;
 }
