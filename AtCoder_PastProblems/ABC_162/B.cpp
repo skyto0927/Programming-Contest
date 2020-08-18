@@ -11,5 +11,10 @@ typedef long long ll;
 
 
 int main() {
+    ll N; cin >> N;
+    ll a = N/15;
+    ll b = N/3;
+    ll c = N/5;
+    cout << N*(N+1)/2 + 15*a*(a+1)/2 - 3*b*(b+1)/2 - 5*c*(c+1)/2 << endl;
     return 0;
 }

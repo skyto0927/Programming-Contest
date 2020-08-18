@@ -11,5 +11,14 @@ typedef long long ll;
 
 
 int main() {
+    ll X,K,D; cin >> X >> K >> D;
+    X = abs(X);
+
+    ll N = X/D;
+    if(N>=K) cout << abs(X - K*D) << endl;
+    else{
+        if((K-N)%2 == 0) cout << abs(X-N*D) << endl;
+        else cout << abs(X-N*D-D) << endl;
+    }
     return 0;
 }

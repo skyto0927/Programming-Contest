@@ -11,5 +11,7 @@ typedef long long ll;
 
 
 int main() {
+    int a,b,c,k,s,t; cin>>a>>b>>c>>k>>s>>t;
+    cout << (s+t>=k?s*(a-c)+t*(b-c):s*a+t*c) << endl;
     return 0;
 }

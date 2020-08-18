@@ -11,5 +11,15 @@ typedef long long ll;
 
 
 int main() {
+    int K; cin >> K;
+    ll ans = 0;
+    FOR(a,1,K+1){
+        FOR(b,1,K+1){
+            FOR(c,1,K+1){
+                ans += __gcd(__gcd(a,b),c);
+            }
+        }
+    }
+    cout << ans << endl;
     return 0;
 }

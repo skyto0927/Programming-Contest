@@ -11,5 +11,7 @@ typedef long long ll;
 
 
 int main() {
+    int s,w; cin >> s >> w;
+    cout << (s<=w?"unsafe":"safe") << endl;
     return 0;
 }

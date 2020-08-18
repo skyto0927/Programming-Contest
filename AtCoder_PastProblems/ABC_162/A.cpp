@@ -11,5 +11,13 @@ typedef long long ll;
 
 
 int main() {
+    string n; cin >> n;
+    REP(i,3){
+        if(n[i]=='7'){
+            cout << "Yes" << endl;
+            return 0;
+        }
+    }
+    cout << "No" << endl;
     return 0;
 }

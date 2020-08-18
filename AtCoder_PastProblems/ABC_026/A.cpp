@@ -11,5 +11,7 @@ typedef long long ll;
 
 
 int main() {
+    int A; cin >> A;
+    cout << (A%2==0?(A/2)*(A/2):(A/2)*(A/2+1)) << endl;
     return 0;
 }

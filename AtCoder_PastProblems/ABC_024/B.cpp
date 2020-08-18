@@ -11,5 +11,18 @@ typedef long long ll;
 
 
 int main() {
+    int N,T; cin >> N >> T;
+    vector<int> G(1e7,0);
+    REP(i,N){
+        int a; cin >> a;
+        G[a]++;
+        G[a+T]--;
+    }
+    int ans = 0;
+    REP(i,1e7-1){
+        G[i+1] += G[i];
+        if(G[i]>0) ans++;
+    }
+    cout << ans << endl;
     return 0;
 }

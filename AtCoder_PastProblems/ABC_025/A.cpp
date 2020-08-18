@@ -11,5 +11,15 @@ typedef long long ll;
 
 
 int main() {
+    string S; cin >> S;
+    int N; cin >> N;
+    vector<string> X;
+    REP(i,5){
+        REP(j,5){
+            X.push_back(S.substr(i,1) + S.substr(j,1));
+        }
+    }
+    sort(ALL(X));
+    cout << X[N-1] << endl;
     return 0;
 }

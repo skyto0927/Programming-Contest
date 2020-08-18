@@ -11,5 +11,7 @@ typedef long long ll;
 
 
 int main() {
+    int a,b,c,d; cin >> a >> b >> c >> d;
+    cout << ((c-1)/b > (a-1)/d? "No" : "Yes" ) << endl;
     return 0;
 }

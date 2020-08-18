@@ -11,5 +11,12 @@ typedef long long ll;
 
 
 int main() {
+    int n; cin >> n;
+    set<string> S;
+    REP(i,n){
+        string s; cin >>s;
+        S.insert(s);
+    }
+    cout << S.size() << endl;
     return 0;
 }
