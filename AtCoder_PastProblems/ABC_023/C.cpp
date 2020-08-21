@@ -27,10 +27,21 @@ int main() {
         csum[col[i]]++;
     }
 
-    vector<int> rcnt(K,0), ccnt(K,0);
-    REP(i,R){
-        
+    vector<int> rcnt(1e5+1,0), ccnt(1e5+1,0);
+    REP(i,R) rcnt[rsum[i]]++;
+    REP(i,C) ccnt[csum[i]]++;
+
+    ll ans = 0;
+    REP(i,K+1){
+        ans += rcnt[i] * ccnt[K-i];
     }
+
+    REP(i,N){
+        if(rsum[row[i]] + csum[col[i]] == K) ans--;
+        if(rsum[row[i]] + csum[col[i]] == K+1) ans++;
+    }
+
+    cout << ans << endl;
 
 
     return 0;
