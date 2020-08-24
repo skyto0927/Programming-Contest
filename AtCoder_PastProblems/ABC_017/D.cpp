@@ -9,15 +9,16 @@ using namespace std;
 #define LINF 1e18
 typedef long long ll;
 
+const int MOD = 1e9+7;
 
 int main() {
-    vector<int> a(3); cin >> a[0] >> a[1] >> a[2];
-    vector<int> X(a);
-    sort(ALL(X));
-    REP(i,3){
-        int itr = lower_bound(ALL(X), a[i]) - X.begin();
-        a[i] = 3-itr;
+    int N,M; cin >> N >> M;
+    vector<int> F(M);
+    REP(i,N){
+        cin >> F[i];
+        F[i]--;
     }
-    REP(i,3) cout << a[i] << endl;
+    
+
     return 0;
 }

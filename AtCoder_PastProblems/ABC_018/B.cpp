@@ -11,5 +11,18 @@ typedef long long ll;
 
 
 int main() {
+    string s; cin >> s;
+    int N; cin >> N;
+    REP(i,N){
+        int l,r; cin >> l >> r;
+        l--;
+        string left = s.substr(0,l);
+        string mid = s.substr(l,r-l);
+        string right = s.substr(r);
+        reverse(ALL(mid));
+        s = left + mid + right;
+    }
+    cout << s << endl;
+    
     return 0;
 }

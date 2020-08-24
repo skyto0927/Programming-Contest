@@ -11,13 +11,10 @@ typedef long long ll;
 
 
 int main() {
-    vector<int> a(3); cin >> a[0] >> a[1] >> a[2];
-    vector<int> X(a);
-    sort(ALL(X));
-    REP(i,3){
-        int itr = lower_bound(ALL(X), a[i]) - X.begin();
-        a[i] = 3-itr;
-    }
-    REP(i,3) cout << a[i] << endl;
+    int a,b,c; cin >> a >> b >> c;
+    if(a+b==c && a-b==c) cout << '?' << endl;
+    else if(a+b==c) cout << '+' << endl;
+    else if(a-b==c) cout << '-' << endl;
+    else cout << '!' << endl;
     return 0;
 }
