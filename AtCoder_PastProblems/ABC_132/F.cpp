@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
 #define FOR(i, m, n) for(int i = m; i < n; i++)
 #define ALL(obj) (obj).begin(), (obj).end()
 #define INF 1e9
+#define LINF 1e18
 typedef long long ll;
-
 
 //////////////////ここの値は必ず確認！！！！！////////////////////
 //---------------------------------------------------------//
@@ -100,4 +101,47 @@ mint com(ll n,ll k){
     if(n<0)return 0;
     if(k<0)return 0;
     return fac[n]*finv[k]*finv[n-k];
+}
+
+int main() {
+    ll N,K; cin >> N >> K;
+
+    vector<int> div;
+    for(int i=1; i*i<=N; i++){
+        div.push_back(i);
+        if(i!=N/i) div.push_back(N/i);
+    }
+    sort(ALL(div));
+    // for(auto a: div) cout << a << " ";
+    // cout << endl;
+
+    ll S = div.size();
+
+    vector<vector<mint>> dp(K, vector<mint>(S,0));
+    REP(i,S){
+        dp[0][i] = div[i];
+    }
+
+    div.push_back(0);
+    sort(ALL(div));
+
+    REP(i,K-1){
+        REP(j,S){
+            dp[i+1][j] = dp[i][S-1-j] * (div[j+1]-div[j]);
+        }
+
+        REP(j,S-1){
+            dp[i+1][j+1] += dp[i+1][j];
+        }
+    }
+
+    // REP(i,S){
+    //     REP(j,K){
+    //         cout << dp[j][i] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    cout << dp[K-1][S-1] << endl;
+    return 0;
 }

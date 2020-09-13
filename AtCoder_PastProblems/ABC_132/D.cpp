@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
 #define FOR(i, m, n) for(int i = m; i < n; i++)
 #define ALL(obj) (obj).begin(), (obj).end()
 #define INF 1e9
+#define LINF 1e18
 typedef long long ll;
 
 
@@ -100,4 +102,20 @@ mint com(ll n,ll k){
     if(n<0)return 0;
     if(k<0)return 0;
     return fac[n]*finv[k]*finv[n-k];
+}
+
+int main() {
+    com_init();
+    ll N,K; cin >> N >> K;
+
+    
+
+    FOR(i,1,K+1){
+        mint ans = 0;
+        ans += com(K-1, K-i) * com(N-K-1, N-K-i-1);
+        ans += com(K-1, K-i) * com(N-K-1, N-K-i) * 2;
+        ans += com(K-1, K-i) * com(N-K-1, N-K-i+1);
+        cout << ans << endl;
+    }
+    return 0;
 }
