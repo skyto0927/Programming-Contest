@@ -11,7 +11,8 @@ typedef long long ll;
 
 
 int main() {
-    int a; cin >> a;
-    cout << 1-a << endl;
+    int K,X; cin >> K >> X;
+    FOR(i,X-K+1,X+K) cout << i << " ";
+    cout << endl;
     return 0;
 }

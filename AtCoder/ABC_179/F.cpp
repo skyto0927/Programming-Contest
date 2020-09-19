@@ -11,7 +11,5 @@ typedef long long ll;
 
 
 int main() {
-    int a; cin >> a;
-    cout << 1-a << endl;
     return 0;
 }

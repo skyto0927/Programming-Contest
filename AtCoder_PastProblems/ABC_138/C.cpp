@@ -11,7 +11,15 @@ typedef long long ll;
 
 
 int main() {
-    int a; cin >> a;
-    cout << 1-a << endl;
+    int N; cin >> N;
+    vector<double> V(N);
+    REP(i,N) cin >> V[i];
+    sort(ALL(V));
+    double ans = V[0];
+
+    FOR(i,1,N){
+        ans = (ans+V[i])/2.0;
+    }
+    cout << ans << endl;
     return 0;
 }

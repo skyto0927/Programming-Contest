@@ -11,7 +11,7 @@ typedef long long ll;
 
 
 int main() {
-    int a; cin >> a;
-    cout << 1-a << endl;
+    int a,b; cin >> a >> b;
+    cout << max({a+b, a-b, a*b}) << endl;
     return 0;
 }

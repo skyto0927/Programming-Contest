@@ -11,7 +11,15 @@ typedef long long ll;
 
 
 int main() {
-    int a; cin >> a;
-    cout << 1-a << endl;
+    int N; cin >> N;
+    vector<ll> A(N);
+    double pro = 1;
+    REP(i,N){
+        cin >> A[i];
+        pro *= A[i];
+    }
+    double X = 0;
+    REP(i,N) X += pro/A[i];
+    cout << pro/X << endl;
     return 0;
 }

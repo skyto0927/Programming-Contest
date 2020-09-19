@@ -12,6 +12,7 @@ typedef long long ll;
 
 int main() {
     int a; cin >> a;
-    cout << 1-a << endl;
+    string s; cin >> s;
+    cout << (a>=3200? s: "red") << endl;
     return 0;
 }

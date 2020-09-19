@@ -9,6 +9,7 @@ using namespace std;
 #define LINF 1e18
 typedef long long ll;
 
+
 //////////////////ここの値は必ず確認！！！！！////////////////////
 //---------------------------------------------------------//
 const int MOD = 1e9+7;
@@ -104,15 +105,6 @@ mint com(ll n,ll k){
 }
 
 int main() {
-    com_init();
-    int S; cin >> S;
-    mint ans = 0;
-    int i = 1;
-    while(S - 3*i >= 0){
-        ans += com(S-2*i-1, i-1);
-        i++;
-    }
-    cout << ans << endl;
-
+    
     return 0;
 }
