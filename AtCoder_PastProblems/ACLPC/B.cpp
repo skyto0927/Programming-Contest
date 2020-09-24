@@ -13,5 +13,20 @@ typedef long long ll;
 
 
 int main() {
+    int N,Q; cin >> N >> Q;
+    fenwick_tree<ll> fw(N);
+    REP(i,N){
+        ll a; cin >> a;
+        fw.add(i,a);
+    }
+    
+    REP(i,Q){
+        int a,b,c; cin >> a >> b >> c;
+        if(a){
+            cout << fw.sum(b,c) << endl;
+        }else{
+            fw.add(b,c);
+        }
+    }
     return 0;
 }

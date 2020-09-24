@@ -13,5 +13,22 @@ typedef long long ll;
 
 
 int main() {
+    int N,M; cin >> N >> M;
+    scc_graph g(N);
+    REP(i,M){
+        int a,b; cin >> a >> b;
+        g.add_edge(a,b);
+    }
+
+    auto ans = g.scc();
+
+    cout << ans.size() << endl;
+    for(auto es: ans){
+        cout << es.size() << " ";
+        for(auto e: es){
+            cout << e << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }

@@ -11,11 +11,20 @@ typedef long long ll;
 
 
 int main() {
-    int N; cin >> N;
-    ll ans = 0;
-    FOR(a,1,N){
-        ans += (N-1)/a;
+    ll N,X,M; cin >> N >> X >> M;
+
+    ll a = X;
+    int K = 1;
+    while((1<<K) <= N) K++;
+    vector<vector<ll>> doubling(K+1, vector<ll>(M,-1));
+    REP(i,M){
+        doubling[0][i] = i*i%M;
     }
-    cout << ans << endl;
+
+    REP(k,K){
+        REP(i,M){
+            doubling
+        }
+    }
     return 0;
 }

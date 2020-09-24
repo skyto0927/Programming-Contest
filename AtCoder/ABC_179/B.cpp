@@ -11,5 +11,18 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    int cnt = 0;
+    bool ok = false;
+    REP(i,N){
+        int a,b; cin >> a >> b;
+        if(a==b){
+            cnt++;
+            if(cnt==3) ok = true;
+        }else{
+            cnt = 0;
+        }
+    }
+    cout << (ok?"Yes":"No") << endl;
     return 0;
 }

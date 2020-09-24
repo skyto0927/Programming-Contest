@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 using namespace std;
+using namespace atcoder;
 
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
@@ -11,11 +13,15 @@ typedef long long ll;
 
 
 int main() {
-    int N; cin >> N;
-    ll ans = 0;
-    FOR(a,1,N){
-        ans += (N-1)/a;
+    int N,Q; cin >> N >> Q;
+    dsu d(N);
+    REP(i,Q){
+        int t,u,v; cin >> t >> u >> v;
+        if(t==0){
+            d.merge(u,v);
+        }else{
+            cout << d.same(u,v) << endl;
+        }
     }
-    cout << ans << endl;
     return 0;
 }

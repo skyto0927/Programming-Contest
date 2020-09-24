@@ -11,5 +11,7 @@ typedef long long ll;
 
 
 int main() {
+    string s; cin >> s;
+    cout << s << (s[s.size()-1]=='s'?"es":"s") << endl;
     return 0;
 }

@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 using namespace std;
+using namespace atcoder;
 
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
@@ -11,11 +13,17 @@ typedef long long ll;
 
 
 int main() {
-    int N; cin >> N;
-    ll ans = 0;
-    FOR(a,1,N){
-        ans += (N-1)/a;
+    int N,M; cin >> N >> M;
+    vector<ll> a(N), b(M);
+    REP(i,N) cin >> a[i];
+    REP(j,M) cin >> b[j];
+
+    vector<ll> c = convolution<998244353>(a,b);
+
+    for(auto ans: c){
+        cout << ans << " ";
     }
-    cout << ans << endl;
+    cout << endl;
+
     return 0;
 }

@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 using namespace std;
+using namespace atcoder;
 
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
@@ -11,10 +13,12 @@ typedef long long ll;
 
 
 int main() {
-    int N; cin >> N;
-    ll ans = 0;
-    FOR(a,1,N){
-        ans += (N-1)/a;
+    string S; cin >> S;
+    auto sa = suffix_array(S);
+
+    ll ans = (ll)S.size()*(S.size()+1)/2;
+    for(auto x: lcp_array(S,sa)){
+        ans -= x;
     }
     cout << ans << endl;
     return 0;

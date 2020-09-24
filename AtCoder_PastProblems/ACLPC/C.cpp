@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 using namespace std;
+using namespace atcoder;
 
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n; i >= 0; i--)
@@ -11,11 +13,10 @@ typedef long long ll;
 
 
 int main() {
-    int N; cin >> N;
-    ll ans = 0;
-    FOR(a,1,N){
-        ans += (N-1)/a;
+    int T; cin >> T;
+    REP(i,T){
+        ll N,M,A,B; cin >> N >> M >> A >> B;
+        cout << floor_sum(N,M,A,B) << endl;
     }
-    cout << ans << endl;
     return 0;
 }
