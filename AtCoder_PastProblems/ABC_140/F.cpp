@@ -11,5 +11,15 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    vector<int> S(pow(2,N));
+    REP(i,pow(2,N)){
+        cin >> S[i];
+    }
+    sort(ALL(S), greater<int>());
+    REP(i,pow(2,N)){
+        cout << S[i] << " ";
+    }
+    cout << endl;
     return 0;
 }

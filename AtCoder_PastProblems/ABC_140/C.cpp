@@ -11,5 +11,15 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    vector<int> B(N+1, INF);
+    REP(i,N-1){
+        cin >> B[i+1];
+    }
+    int ans = 0;
+    REP(i,N){
+        ans += min(B[i], B[i+1]);
+    }
+    cout << ans << endl;
     return 0;
 }

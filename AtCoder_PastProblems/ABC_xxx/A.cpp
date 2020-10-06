@@ -11,6 +11,8 @@ using namespace atcoder;
 #define LINF 1e18
 typedef long long ll;
 
+template<class T>bool chmax(T &a, const T &b){if(a<b){a=b;return 1;}return 0;}
+template<class T>bool chmin(T &a, const T &b){if(a>b){a=b;return 1;}return 0;}
 
 int main() {
     return 0;

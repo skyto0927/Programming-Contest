@@ -11,5 +11,23 @@ typedef long long ll;
 
 
 int main() {
+    int N; cin >> N;
+    vector<int> A(N),B(N),C(N-1);
+    int ans = 0;
+    REP(i,N) cin >> A[i];
+    REP(i,N){
+        cin >> B[i];
+        ans += B[i];
+    }
+    REP(i,N-1) cin >> C[i];
+
+    
+    REP(i,N-1){
+        if(A[i+1]-A[i] == 1){
+            ans += C[A[i]-1];
+        }
+    }
+
+    cout << ans << endl;
     return 0;
 }

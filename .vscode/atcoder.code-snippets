@@ -1,0 +1,87 @@
+{
+	// Place your Programming-Contest ワークスペース snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"lazy seg": {
+		"scope": "cpp",
+		"prefix": "lazy_segtree",
+		"body": [
+			"struct S{",
+			"};",
+			"",
+			"S op(S a, S b){",
+			"\treturn;",
+			"}",
+			"",
+			"S e(){",
+				"\treturn;",
+			"}",
+			"",
+			"struct F{",
+			"};",
+			"",
+			"S mapping(F f, S x){",
+				"\treturn;",
+			"}",
+			"",
+			"F composition(F f, F g){",
+				"\treturn;",
+			"}",
+			"",
+			"F id(){",
+				"\treturn;",
+			"}"
+		],
+		"description": "遅延セグ木の構造部分"
+	},
+	"segtree": {
+		"scope": "cpp",
+		"prefix": "segtree",
+		"body": [
+			"struct S{",
+			"};",
+			"",
+			"S op(S a, S b){",
+			"\treturn;",
+			"}",
+			"",
+			"S e(){",
+				"\treturn;",
+			"}"
+		],
+		"description": "セグ木の構造部分"
+	},
+
+
+	"main()": {
+		"scope": "cpp",
+		"prefix": "main",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"#include <atcoder/all>",
+			"using namespace std;",
+			"using namespace atcoder;",
+			"",
+			"#define REP(i, n) for(int i = 0; i < n; i++)",
+			"#define REPR(i, n) for(int i = n; i >= 0; i--)",
+			"#define FOR(i, m, n) for(int i = m; i < n; i++)",
+			"#define ALL(obj) (obj).begin(), (obj).end()",
+			"#define INF 1e9",
+			"#define LINF 1e18",
+			"typedef long long ll;",
+			"",
+			"template<class T>bool chmax(T &a, const T &b){if(a<b){a=b;return 1;}return 0;}",
+			"template<class T>bool chmin(T &a, const T &b){if(a>b){a=b;return 1;}return 0;}",
+			"",
+			"int main() {",
+			"\t",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "main関数"
+	},
+}
